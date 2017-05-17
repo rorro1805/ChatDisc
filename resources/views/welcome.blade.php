@@ -77,6 +77,11 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
+                <ul>
+                    @foreach($mensajes as $mensaje)
+                        <li>{{$mensaje -> usuario}}</li>
+                    @endforeach
+                </ul>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>

@@ -12,5 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $msj = 'Hola mundo';
+    return view('welcome', ["mensaje" => $msj]);
 });
+
+Route::get('/mensajes', function () {
+    $msg = new \App\Mensaje();
+    $msg->usuario = "rcontreras";
+    $msg->texto = "Hola mundo!";
+    $msg->fecha = \Carbon\Carbon::now();
+
+    $msg->save();
+    $listaMensajes= App\Mensaje::all();
+
+    return view('welcome', ['mensajes' => $listaMensajes]);
+});
+
