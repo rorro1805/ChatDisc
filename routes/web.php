@@ -32,6 +32,8 @@ Route::get('/login', function (){
     return view('login');
 });
 
+Route::post('/chat', 'chatController@saveMessage');
+
 Route::get('/chat', function (){
     return view('/chat');
 });

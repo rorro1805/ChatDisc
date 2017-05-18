@@ -27,10 +27,18 @@ class chatController extends Controller
 
     public function saveMessage(Request $request)
     {
-        if($request->isMethod('post'))
-        {
+        $texto = $request->get('mensaje');
 
-        }
+        $msg = new \App\Mensaje();
+        $msg->usuario = "rcontreras";
+        $msg->texto = $texto;
+        $msg->fecha = \Carbon\Carbon::now();
+
+        $msg->save();
+
+        $listaMensajes = \App\Mensaje::all();
+
+        return view('/chat', ['mensajes' => $listaMensajes]);
     }
 
 }

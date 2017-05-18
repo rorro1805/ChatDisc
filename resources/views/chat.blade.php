@@ -104,21 +104,22 @@
                     <span class="bubble-quote"/>
                 </span>
                     </div>
-                    <ul>
-                        @if(Route::has('mensaje'))
-                            @foreach($mensajes as $mensaje)
-                                <li>{{$mensaje -> usuario}}</li>
-                            @endforeach
-                        @endif
-                    </ul>
                     <!-- CHAT_CONTENT-->
                 </div>
             </div>
         </div>
     </div>
     <center>
+        <ul>
+            @if(Request::isMethod('post'))
+                @foreach($mensajes as $mensaje)
+                    <li>{{$mensaje -> texto}}</li>
+                @endforeach
+            @endif
+        </ul>
         <div class="form">
-            <form action="../../app/Http/Controllers/chatController.php" method="post">
+            <form action="chat" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="text" name="mensaje">
                 <input type="submit">
             </form>
