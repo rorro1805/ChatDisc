@@ -28,3 +28,12 @@ Route::get('/mensajes', function () {
     return view('welcome', ['mensajes' => $listaMensajes]);
 });
 
+Route::get('/login', function (){
+    return view('login');
+});
+
+Route::get('/chat', function (){
+    return view('/chat');
+});
+
+
